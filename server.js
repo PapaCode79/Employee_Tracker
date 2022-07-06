@@ -1,5 +1,5 @@
-const mysql = require('mysql');
-const inquirer = require('inquirer')
+const mysql = require('mysql2');
+// const inquirer = require('inquirer')
 
 //DATABASE CONNECTION
 const connection = mysql.createConnection({
@@ -20,6 +20,6 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
     if (err) throw err;
     // initialQuestions();
-    console.log("dadabase connection")
+    console.log("WE ARE CONNECTED!")
 })
 
