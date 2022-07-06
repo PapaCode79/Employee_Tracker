@@ -9,6 +9,7 @@ CREATE TABLE departments (
   name VARCHAR(30) UNIQUE NOT NULL
 );
 
+/*fk = foreign key */
 CREATE TABLE roles (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   title VARCHAR(30) UNIQUE NOT NULL,
