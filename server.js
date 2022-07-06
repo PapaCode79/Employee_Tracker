@@ -1,5 +1,5 @@
 const mysql = require('mysql2');
-// const inquirer = require('inquirer')
+const inquirer = import('inquirer');
 
 //DATABASE CONNECTION
 const connection = mysql.createConnection({
@@ -19,7 +19,9 @@ const connection = mysql.createConnection({
 //make connection to database to begin application
 connection.connect((err) => {
     if (err) throw err;
-    // initialQuestions();
+    
     console.log("WE ARE CONNECTED!")
+
+    //  use inquirer to ask questions about user
 })
 
