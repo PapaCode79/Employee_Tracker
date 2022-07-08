@@ -1,8 +1,8 @@
-DROP DATABASE IF EXISTS employee_tracker;
+DROP DATABASE IF EXISTS employee_tracker;  /* Delete current database if there is one */
 
-CREATE DATABASE employee_tracker;
+CREATE DATABASE employee_tracker;  /* Creates a new EMPTY database */
 
-USE employee_tracker;
+USE employee_tracker; /* use the new database that was created */
 
 CREATE TABLE departments (
   id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
