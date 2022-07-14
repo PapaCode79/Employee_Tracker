@@ -88,11 +88,75 @@ connection.connect((err) => {
 
 
             } else if (userRequest.userResponse === 'View Roles') {
-                console.log('THE USE CHOSE TO VIEW ROLES')
+                // now, we make a connection to the database and get information from the database
+                connection.query(
+                    'SELECT * FROM roles',
+                    (error, response) => {
+                        // the database gives you either an error or a response
+                        if (response) {
+                            
+                            console.log('List of roles')
+                            // no loop
+                            console.log(response)
+                            console.log('')
+                            // we have more than 1 department. So we need to loop over them
+                            response.forEach((roles) => console.log(roles))
+                            console.log(' ')
+                            // make the loop look nice
+                            response.forEach((roles) => console.log(roles.title))
+                        } else {
+                            //if there is an error
+                            // this is called a template literal. This is a fancy way to write a variable inside a string
+                            console.log(`Error!... ${error}`)
+                        }
+                    
+                    } 
+                    
+                )
+           
+                
             } else if (userRequest.userResponse === 'View Employees') {
-                console.log('THE USER WANTS TO VIEW ALL EMPLOYEES')
+                // console.log('')
+                // now, we make a connection to the database and get information from the database
+                connection.query(
+                    'SELECT * FROM employees',
+                    (error, response) => {
+                        // the database gives you either an error or a response
+                        if (response) {
+                            
+                            console.log('List of employees')
+                            // no loop
+                            console.log(response)
+                            console.log('')
+                            // we have more than 1 department. So we need to loop over them
+                            response.forEach((employees) => console.log(employees))
+                            console.log(' ')
+                            // make the loop look nice
+                            response.forEach((employees) => console.log(employees.first_name,employees.last_name))
+                        } else {
+                            //if there is an error
+                            // this is called a template literal. This is a fancy way to write a variable inside a string
+                            console.log(`Error!... ${error}`)
+                        }
+                    
+                    } 
+                    
+                )
+           
+            } else if (userRequest.userResponse === 'Add the Department')
+            { 
+                // we don't know the name of the new department, we have to ask the user for the name
+                inquirer.prompt({
+                    'name': 'newDepartmentName',
+                    'type': 'input',
+                    'message' : 'What is the name of the new department?' 
+                })
+                    .then((response) => {
+                    // connect to the database
+                        connection.query(`INSERT INTO departments (name) VALUES ('${response.newDepartmentName}')`);
+                        console.log(`Adding new department: ${response.newDepartmentName}`)
+                })
             }
-               else{console.log('The user chose to exit the program')}
             
         })
 })
