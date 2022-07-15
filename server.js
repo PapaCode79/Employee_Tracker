@@ -86,7 +86,6 @@ connection.connect((err) => {
                     
                 )
 
-
             } else if (userRequest.userResponse === 'View Roles') {
                 // now, we make a connection to the database and get information from the database
                 connection.query(
@@ -113,8 +112,7 @@ connection.connect((err) => {
                     } 
                     
                 )
-           
-                
+                          
             } else if (userRequest.userResponse === 'View Employees') {
                 // console.log('')
                 // now, we make a connection to the database and get information from the database
@@ -143,8 +141,7 @@ connection.connect((err) => {
                     
                 )
            
-            } else if (userRequest.userResponse === 'Add the Department')
-            { 
+            } else if (userRequest.userResponse === 'Add the Department') { 
                 // we don't know the name of the new department, we have to ask the user for the name
                 inquirer.prompt({
                     'name': 'newDepartmentName',
@@ -156,10 +153,35 @@ connection.connect((err) => {
                         connection.query(`INSERT INTO departments (name) VALUES ('${response.newDepartmentName}')`);
                         console.log(`Adding new department: ${response.newDepartmentName}`)
                 })
+            } else if (userRequest.userResponse === 'Add Role') { 
+                // we don't know the name of the new department, we have to ask the user for the name
+                inquirer.prompt({
+                    'name': 'newRoleName',
+                    'type': 'input',
+                    'message' : 'What is the name of the new role?' 
+                })
+                    .then((response) => {
+                    // connect to the database
+                        connection.query(`INSERT INTO roles (name) VALUES ('${response.newRoleName}')`);
+                        console.log(`Adding new role: ${response.newRoleName}`)
+                })
+            }
+        
+        
+            else if (userRequest.userResponse === 'Add the Employee')
+            { 
+                // we don't know the name of the new department, we have to ask the user for the name
+                inquirer.prompt({
+                    'name': 'newEmployeeName',
+                    'type': 'input',
+                    'message' : 'What is the name of the new employee?' 
+                })
+                    .then((response) => {
+                    // connect to the database
+                        connection.query(`INSERT INTO employees (name) VALUES ('${response.newEmployeeName}')`);
+                        console.log(`Adding new employee: ${response.newEmployeeName}`)
+                })
             }
             
-        })
+         })
 })
-
-
-
