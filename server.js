@@ -164,12 +164,9 @@ connection.connect((err) => {
                     // connect to the database
                         connection.query(`INSERT INTO roles (name) VALUES ('${response.newRoleName}')`);
                         console.log(`Adding new role: ${response.newRoleName}`)
-                })
-            }
-        
-        
-            else if (userRequest.userResponse === 'Add the Employee')
-            { 
+                    })
+                
+            }  else if (userRequest.userResponse === 'Add the Employee') { 
                 // we don't know the name of the new department, we have to ask the user for the name
                 inquirer.prompt({
                     'name': 'newEmployeeName',
